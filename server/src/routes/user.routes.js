@@ -1,6 +1,6 @@
 import express from 'express';
 import { login, register, test } from '../controllers/user.controller.js';
-import tryCatch from '../../utils/TryCatch.utils.js';
+import tryCatch from '../utils/TryCatch.utils.js';
 
 const router = express.Router();
 
