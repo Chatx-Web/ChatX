@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import HomeDescription from "./components/home/description";
-import HomeHeading from "./components/home/heading";
-import NavBar from "./components/home/nav-bar";
-import Container from "./components/reusable/container";
-import { useTitle } from "./hooks/use-title";
+import HomeDescription from "../components/home/description";
+import HomeHeading from "../components/home/heading";
+import NavBar from "../components/home/nav-bar";
+import Container from "../components/reusable/container";
+import { useTitle } from "../hooks/use-title";
 
-function App() {
+function Home() {
   useEffect(() => {
     useTitle("ChatX | Home");
   }, []);
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
