@@ -3,7 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 
-import * as middlewares from "./middlewares";
+import * as middlewares from "./middlewares/middlewares";
 import apiv1 from "./api/v1";
 import { MessageResponse } from "./api/types";
 

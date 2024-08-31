@@ -2,12 +2,12 @@
   "name": "express-api-starter-ts",
   "version": "1.2.0",
   "description": " A basic starter for an express.js API with Typescript",
-  "main": "src/index.ts",
+"main": "src/server.ts",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "start:dist": "node dist/src/index.js",
+    "start:dist": "node dist/src/server.js",
     "lint": "eslint --fix src test",
     "test": "jest",
     "typecheck": "tsc --noEmit"
@@ -25,6 +25,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
+    "mongoose": "^8.6.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
