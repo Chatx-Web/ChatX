@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { MessageResponse } from "../types";
-import { authRouter } from "./auth";
-import { userRouter } from "./user";
+import { MessageResponse } from "./types/types";
+import { authRouter } from "./routes/auth.router";
+import { userRouter } from "./routes/user.router";
 
 const router = Router();
 

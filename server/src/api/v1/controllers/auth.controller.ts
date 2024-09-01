@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { ControllerMethodReturn, MessageResponse } from "../../types";
+import { ControllerMethodReturn, MessageResponse } from "../types/types";
 import { valid } from "../../../utils/valid";
-import * as userService from "../user/service";
+import * as userService from "../services/user.service";
 import { random } from "../../../utils/random";
 import bcrypt from "bcrypt";
 import {
@@ -9,8 +9,9 @@ import {
   AuthLoginResponse,
   AuthRegisterBody,
   AuthRegisterResponse,
-} from "./types";
+} from "../types/types";
 
+// This Is Register Controller
 export function register(
   req: Request<{}, {}, AuthRegisterBody>,
   res: Response<AuthRegisterResponse>
@@ -53,6 +54,7 @@ export function register(
   }
 }
 
+// This Is Login Controller
 export function login(
   req: Request<{}, {}, AuthLoginBody>,
   res: Response<AuthLoginResponse>

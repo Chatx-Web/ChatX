@@ -5,7 +5,7 @@ import cors from "cors";
 
 import * as middlewares from "./middlewares/middlewares";
 import apiv1 from "./api/v1";
-import { MessageResponse } from "./api/types";
+import { MessageResponse } from "./api/v1/types/types";
 
 require("dotenv").config();
 
@@ -22,7 +22,14 @@ app.get<{}, MessageResponse>("/", (req, res) => {
   });
 });
 
+
 app.use("/api/v1", apiv1);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
+
+app.all("*",(req, res) => {
+  res.status(404).json({
+    message: "Page Not Found",
+  });
+})

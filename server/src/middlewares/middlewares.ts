@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { ErrorResponse } from "../api/types";
+import { ErrorResponse } from "../api/v1/types/types";
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
