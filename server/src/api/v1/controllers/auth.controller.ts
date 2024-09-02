@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { ControllerMethodReturn, MessageResponse } from "../types/types";
-import { valid } from "../../../utils/valid";
+import { valid } from "../../../utils/valid.util";
 import * as userService from "../services/user.service";
-import { random } from "../../../utils/random";
+import { random } from "../../../utils/random.util";
 import bcrypt from "bcrypt";
 import {
   AuthLoginBody,

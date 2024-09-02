@@ -2,10 +2,9 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
-
-import * as middlewares from "./middlewares/middlewares";
 import apiv1 from "./api/v1";
 import { MessageResponse } from "./api/v1/types/types";
+import { errorHandler } from "./middlewares/error-handler";
 
 require("dotenv").config();
 
@@ -25,8 +24,7 @@ app.get<{}, MessageResponse>("/", (req, res) => {
 
 app.use("/api/v1", apiv1);
 
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+app.use(errorHandler);
 
 app.all("*",(req, res) => {
   res.status(404).json({
