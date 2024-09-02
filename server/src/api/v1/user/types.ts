@@ -6,3 +6,9 @@ export interface UserType {
 }
 
 export interface UserTypeWithoutId extends Omit<UserType, "_id"> {}
+
+export interface JWTUserType {
+  sub: string;
+  username: string;
+  email: string;
+}

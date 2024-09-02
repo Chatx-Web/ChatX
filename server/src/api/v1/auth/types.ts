@@ -13,5 +13,5 @@ export interface AuthLoginBody {
 export type AuthLoginResponse =
   | MessageResponse
   | {
-      token: string;
+      authToken: string;
     };

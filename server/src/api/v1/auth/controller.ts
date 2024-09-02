@@ -10,6 +10,7 @@ import {
   AuthRegisterBody,
   AuthRegisterResponse,
 } from "./types";
+import { createJwtToken } from "../../../utils/jwt";
 
 export function register(
   req: Request<{}, {}, AuthRegisterBody>,
@@ -36,7 +37,7 @@ export function register(
     const user = userService.findUserWithEmail(body.email);
 
     if (user) {
-      res.status(401).json({ message: "This user already exists" });
+      res.status(401).json({ message: "This email is already in use" });
       return;
     }
 
@@ -78,7 +79,12 @@ export function login(
       return;
     }
 
-    return res.json({ token: "token" });
+    const authToken = createJwtToken({
+      sub: user._id,
+      ...user,
+    });
+
+    return res.json({ authToken });
   } catch (error: any) {
     return res.status(500).json({ message: "Cannot login" });
   }
