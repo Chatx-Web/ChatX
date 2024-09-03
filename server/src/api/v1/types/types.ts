@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Response, RequestHandler } from "express";
 
 export interface MessageResponse {
   message: string;
@@ -33,3 +33,8 @@ export interface UserType {
 
 export interface UserTypeWithoutId extends Omit<UserType, "_id"> {}
 
+export interface Route {
+  path: string;
+  method: "get" | "post" | "put" | "delete";
+  handler: RequestHandler; // Type handler as Express RequestHandler
+}
