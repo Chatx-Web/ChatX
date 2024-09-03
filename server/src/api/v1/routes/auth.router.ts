@@ -1,14 +1,10 @@
 import { Router, RequestHandler } from "express";
 import { login, register } from "../controllers/auth.controller";
+import { Route } from "../types/types";
+import { TryCatch } from "../../../utils/try-catch.util";
 
 export const authRouter = Router();
 
-type Method = "get" | "post" | "put" | "delete";
-interface Route {
-  path: string;
-  method: Method;
-  handler: RequestHandler; // Type handler as Express RequestHandler
-}
 
 const publicRoutes: Route[] = [
   {
@@ -24,12 +20,9 @@ const publicRoutes: Route[] = [
 ];
 
 publicRoutes.forEach(route => {
-  const method = route.method as Method;
-  if (typeof authRouter[method] === "function") {
-    authRouter[method](route.path, route.handler);
-  } else {
-    console.error(`Invalid method: ${route.method}`);
-  }
+  const method = route.method;
+  const handler = route.handler as RequestHandler;
+  authRouter[method](route.path,TryCatch(handler));
 });
 authRouter.get("/", (req, res) => {
   res.json({ message: "API - v1 👋🌎🌍🌏" });
