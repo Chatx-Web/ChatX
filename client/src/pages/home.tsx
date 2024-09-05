@@ -4,7 +4,7 @@ import Container from "../components/reusable/container";
 import { useTitle } from "../hooks/use-title";
 import HomeHeader from "../components/home/header";
 
-function Home() {
+export default function Home() {
   useEffect(() => {
     useTitle("ChatX | Home");
   }, []);
@@ -18,5 +18,3 @@ function Home() {
     </main>
   );
 }
-
-export default Home;
