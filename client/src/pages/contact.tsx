@@ -2,21 +2,18 @@ import { useEffect } from "react";
 import NavBar from "../components/home/nav-bar";
 import Container from "../components/reusable/container";
 import { useTitle } from "../hooks/use-title";
-import HomeHeader from "../components/home/header";
 
-function Home() {
+export default function Contact() {
   useEffect(() => {
-    useTitle("ChatX | Home");
+    useTitle("ChatX | Contact");
   }, []);
 
   return (
     <main>
       <NavBar />
       <Container className="mt-24">
-        <HomeHeader />
+        <p>Hello contact!</p>
       </Container>
     </main>
   );
 }
-
-export default Home;
