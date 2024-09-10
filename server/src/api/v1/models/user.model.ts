@@ -1,12 +1,5 @@
 import { getModelForClass, modelOptions, pre, prop } from "@typegoose/typegoose";
-import argon2 from "argon2";
-import { nanoid } from "nanoid";
 
-@pre<UserSchema>("save", async function () {
-    if(!this.isModified("password")) return;
-    const hash = await argon2.hash(this.password);
-    this.password = hash;
-})
 @modelOptions({ schemaOptions: { timestamps: true } })
 export class UserSchema {
     @prop({ required: true, unique: true })
@@ -18,13 +11,14 @@ export class UserSchema {
     @prop({ required: true })
     public password!: string;
 
-    @prop({ required: true, default: () => nanoid() })
+    @prop({ required: true, default: 0 })
     public verificationCode!: string;
 
+    @prop({ default: null })
     public passwordResetCode!: string | null;
 
-    @prop({ required: true ,default: false })   
-    public isVrified!: boolean;
+    @prop({ required: true, default: false })   
+    public isVerified!: boolean;  // Fix the typo here
 }
 
 export const UserModel = getModelForClass(UserSchema);

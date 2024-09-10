@@ -2,9 +2,12 @@ import { Response, RequestHandler } from "express";
 
 export interface MessageResponse {
   message: string;
+  data: Object;
+  accessToke: string;
 }
 
-export interface ErrorResponse extends MessageResponse {
+export interface ErrorResponse {
+  message: string;
   stack?: string;
 }
 
@@ -36,5 +39,5 @@ export interface UserTypeWithoutId extends Omit<UserType, "_id"> {}
 export interface Route {
   path: string;
   method: "get" | "post" | "put" | "delete";
-  handler: RequestHandler; // Type handler as Express RequestHandler
+  handler: RequestHandler;
 }

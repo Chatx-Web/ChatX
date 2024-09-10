@@ -1,11 +1,10 @@
 import { Router } from "express";
-import { MessageResponse } from "./types/types";
 import { authRouter } from "./routes/auth.router";
 import { userRouter } from "./routes/user.router";
 
 const router = Router();
 
-router.get<{}, MessageResponse>("/", (req, res) => {
+router.get("/", (req, res) => {
   res.json({
     message: "API - v1 👋🌎🌍🌏",
   });
