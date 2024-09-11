@@ -1,6 +1,6 @@
-import Container from "../reusable/container";
-import Logo from "../reusable/logo";
-import Button from "../reusable/button";
+import Container from "./container";
+import Logo from "./logo";
+import Button from "./button";
 import { Link } from "react-router-dom";
 
 interface NavLinkProps {
