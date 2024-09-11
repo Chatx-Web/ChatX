@@ -68,6 +68,7 @@ export async function login(
     })
 }
 
+// This Is Refresh Token Controller
 export const refreshToken = async(req:Request,res: Response) => {
   const refreshToken = req.cookies.refreshToken;
   if(!refreshToken) throw new Error("Invalid Refresh Token!")
@@ -84,4 +85,10 @@ export const refreshToken = async(req:Request,res: Response) => {
 
   const accessToken = generateAccessToken(user._id)  
   return res.json({accessToke:accessToken})
+}
+
+// This Is Logout Controller
+export const logout = (req: Request, res: Response) => {
+  res.clearCookie('refreshToken')
+  res.json({ message: 'Logged out successfully' })
 }

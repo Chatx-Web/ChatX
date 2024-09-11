@@ -3,7 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import apiv1 from "./api/v1";
-import { errorHandler } from "./middlewares/error-handler";
+import { errorHandler } from "./middlewares/error-handler.middleware";
 import cookieParser from "cookie-parser";
 
 require("dotenv").config();
