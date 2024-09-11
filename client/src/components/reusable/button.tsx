@@ -7,7 +7,7 @@ interface ButtonProps extends ComponentProps<"button"> {
 
 enum ButtonVariants {
   default = "bg-white text-black",
-  primary = "bg-primary text-white",
+  primary = "bg-[var(--primary)] text-white",
 }
 
 export default function Button({

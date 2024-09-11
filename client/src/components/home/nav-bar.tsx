@@ -21,7 +21,7 @@ function NavLink({ to, content }: NavLinkProps) {
 
 export default function NavBar() {
   return (
-    <nav className="fixed top-0 left-0 w-full flex flex-col justify-center h-20 shadow-sm shadow-white/10 bg-opacity-25 backdrop-blur-lg backdrop-filter z-10">
+    <nav className="fixed top-0 left-0 z-10 flex flex-col justify-center w-full h-20 bg-opacity-25 shadow-sm shadow-white/10 backdrop-blur-lg backdrop-filter">
       <Container className="flex items-center justify-between">
         <Logo />
         <div className="space-x-4">
@@ -30,7 +30,16 @@ export default function NavBar() {
           <NavLink to="/contact" content="Contact" />
           <NavLink to="/services" content="Services" />
         </div>
-        <Button className="py-1 px-2">Login</Button>
+        <div className="space-x-4">
+          <Link to="/signup">
+            <Button className="px-2 py-1" variant="primary">
+              Sign up
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button className="px-2 py-1">Login</Button>
+          </Link>
+        </div>
       </Container>
     </nav>
   );
