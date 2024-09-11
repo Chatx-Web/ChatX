@@ -3,8 +3,8 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import apiv1 from "./api/v1";
-import { MessageResponse } from "./api/v1/types/types";
-import { errorHandler } from "./middlewares/error-handler";
+import { errorHandler } from "./middlewares/error-handler.middleware";
+import cookieParser from "cookie-parser";
 
 require("dotenv").config();
 
@@ -14,8 +14,9 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
-app.get<{}, MessageResponse>("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
   });
