@@ -1,5 +1,5 @@
 import { Router, RequestHandler } from "express";
-import { login, register } from "../controllers/auth.controller";
+import { login, refreshToken, register } from "../controllers/auth.controller";
 import { Route } from "../types/types";
 import { TryCatch } from "../../../utils/try-catch.util";
 
@@ -16,6 +16,11 @@ const publicRoutes: Route[] = [
     path: "/login",
     method: "post", // Login should be POST
     handler: login
+  },
+  {
+    path: "/refresh",
+    method: "get",
+    handler: refreshToken
   }
 ];
 

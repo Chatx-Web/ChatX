@@ -10,6 +10,7 @@ import {
 } from "../types/types";
 import { UserModel } from "../models/user.model";
 import { generateAccessToken, generateRefreshToken } from "../../../utils/token-generater.util";
+import jwt from "jsonwebtoken";
 
 // This Is Register Controller
 export async function register(
@@ -65,4 +66,22 @@ export async function login(
       httpOnly: true,
       secure: true
     })
+}
+
+export const refreshToken = async(req:Request,res: Response) => {
+  const refreshToken = req.cookies.refreshToken;
+  if(!refreshToken) throw new Error("Invalid Refresh Token!")
+  
+  const decode = await jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET!)
+  if(!decode) throw new Error("Invalid Refresh Token!")
+
+  if(typeof decode != 'object' ) throw new Error("Invalid Refresh Token!")
+
+  const id = decode.id
+  const user = await UserModel.findById(id)
+
+  if(!user) throw new Error("Unauthorized User!")  
+
+  const accessToken = generateAccessToken(user._id)  
+  return res.json({accessToke:accessToken})
 }
