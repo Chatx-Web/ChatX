@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import NavBar from "../components/home/nav-bar";
+import NavBar from "../components/reusable/nav-bar";
 import Container from "../components/reusable/container";
 import { useTitle } from "../hooks/use-title";
 import HomeHeader from "../components/home/header";
