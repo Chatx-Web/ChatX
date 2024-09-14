@@ -1,7 +1,7 @@
 import Container from "./container";
 import Logo from "./logo";
 import Button from "./button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { createStyle } from "../../utils/create-style";
 import { navLinks } from "../../data";
@@ -26,6 +26,8 @@ function LargeNavLink({ to, content }: NavLinkProps) {
 }
 
 function LargeScreenNav() {
+  const location = useLocation();
+
   return (
     <Container className="items-center justify-between hidden md:flex">
       <Logo />
@@ -34,16 +36,18 @@ function LargeScreenNav() {
           <LargeNavLink key={navLink.id} {...navLink} />
         ))}
       </div>
-      <div className="space-x-4">
-        <Link to="/signup">
-          <Button className="px-2 py-1" variant="primary">
-            Sign up
-          </Button>
-        </Link>
-        <Link to="/login">
-          <Button className="px-2 py-1">Login</Button>
-        </Link>
-      </div>
+      {location.pathname !== "/signup" && location.pathname !== "/login" ? (
+        <div className="space-x-4">
+          <Link to="/signup">
+            <Button className="px-2 py-1" variant="primary">
+              Sign up
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button className="px-2 py-1">Login</Button>
+          </Link>
+        </div>
+      ) : null}
     </Container>
   );
 }
@@ -59,6 +63,7 @@ function SmallNavLink({ to, content }: NavLinkProps) {
 }
 
 function SmallScreenNav() {
+  const location = useLocation();
   const [menuActive, setMenuActive] = useState(false);
 
   useEffect(() => {
@@ -101,16 +106,19 @@ function SmallScreenNav() {
               {navLinks.map((navLink) => (
                 <SmallNavLink key={navLink.id} {...navLink} />
               ))}
-              <div className="grid grid-cols-2 gap-4">
-                <Link to="/signup">
-                  <Button className="w-full py-2" variant="primary">
-                    Sign up
-                  </Button>
-                </Link>
-                <Link to="/login">
-                  <Button className="w-full py-2">Login</Button>
-                </Link>
-              </div>
+              {location.pathname !== "/signup" &&
+              location.pathname !== "/login" ? (
+                <div className="grid grid-cols-2 gap-4">
+                  <Link to="/signup">
+                    <Button className="w-full py-2" variant="primary">
+                      Sign up
+                    </Button>
+                  </Link>
+                  <Link to="/login">
+                    <Button className="w-full py-2">Login</Button>
+                  </Link>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
