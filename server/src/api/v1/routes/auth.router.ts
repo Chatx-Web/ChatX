@@ -1,5 +1,5 @@
 import { Router, RequestHandler } from "express";
-import { login, logout, refreshToken, register } from "../controllers/auth.controller";
+import { authenticateToken, login, logout, refreshToken, register } from "../controllers/auth.controller";
 import { Route } from "../types/types";
 import { TryCatch } from "../../../utils/try-catch.util";
 
@@ -25,6 +25,10 @@ const publicRoutes: Route[] = [
     path: "/logout",
     method: "get",
     handler: logout
+  },{
+    path: "/authenticate-user",
+    method: "post",
+    handler: authenticateToken
   }
 ];
 
