@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 import config from "../configs/config";
+import { infoLogger, errorLogger } from "../loggers/logger";
 
 export async function connectDB() {
     try {
         const mongoURI:string = config.mongoURI;
 
         await mongoose.connect(mongoURI);
-        console.log("Connected to MongoDB");
+        infoLogger.info("Connected to MongoDB");
     } catch (error) {
-        console.log(error);
+        errorLogger.error(error);
     }
 }
 

@@ -9,8 +9,4 @@ class Valid {
   }
 }
 
-/**
- * @instance
- * a util class instance to validate data types and complex stuff
- */
 export const valid = new Valid();

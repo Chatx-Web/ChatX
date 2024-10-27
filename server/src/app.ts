@@ -1,17 +1,14 @@
 import express from "express";
-import morgan from "morgan";
-import helmet from "helmet";
 import cors from "cors";
 import apiv1 from "./api/v1";
 import { errorHandler } from "./middlewares/error-handler.middleware";
 import cookieParser from "cookie-parser";
-
-require("dotenv").config();
+import morgan from "morgan";
+import { morganFormate, morganData } from "./loggers/morgan"
 
 export const app = express();
 
-app.use(morgan("dev"));
-app.use(helmet());
+app.use(morgan(morganFormate,morganData));
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());

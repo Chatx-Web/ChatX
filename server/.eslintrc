@@ -25,6 +25,5 @@
     "import/resolver": {
       "typescript": {}
     }
-  },
-  "eslint.workingDirectories": ["src"]
+  }
 }

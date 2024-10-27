@@ -3,7 +3,7 @@ import config from '../configs/config';
 import { Types } from 'mongoose';
 
 export function generateAccessToken(userId:Types.ObjectId) {
-    return jwt.sign({ Id:userId }, config.accessTokenSecret, { expiresIn: '15m' });
+    return jwt.sign({ Id:userId }, config.accessTokenSecret, { expiresIn: '1h' });
 }
 
 export function generateRefreshToken(userId: Types.ObjectId) {
